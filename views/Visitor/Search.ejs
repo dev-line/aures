@@ -1,0 +1,68 @@
+<style>
+    .fixed-top.scrolled {
+        background-color: rgba(36, 36, 36, 0.904) !important;
+        transition: background-color 200ms linear;
+        color: #ffffff !important;
+    }
+
+    .fixed-top.scrolled a {
+        color: #ffffff !important;
+    }
+</style>
+
+<% layout ('index') %>
+
+<title>بحث عن : <%=query%></title>
+
+
+<div id="Searching">
+    <h1 class="display-4 text-center text-white">نتائج البحث</h1>
+</div>
+<div class="News">
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <% if (Posts){%>
+                <div class="row Posts">
+                    <% Posts.forEach((Post, i)=>{%>
+                    <% if(i>= Count-10 && i<Count){%>
+                    <div class="col-sm-6 Post">
+                        <div class="card card-small card-post card-post--1 text-right" style="margin: 10px;">
+                            <div class=" card-post__image" style="background-image: url('<%= Post.Thumbnail %>');">
+                                <p class="card-post__category badge badge-pill badge-info"><%= Post.Categ %></p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a class="text-fiord-blue" href="/news/<%=Post._id%>"><%= Post.Title %></a>
+                                </h5>
+                                <div class="card-text d-inline-block mb-3 Content">
+                                    <%- Post.Content.substring(0, 50) %>
+                                </div>
+                                <br>
+                                <span class="text-muted" style="direction: ltr"><%= Post.Date.toLocaleString() %></span>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                    <%})%>
+                </div>
+                <%} else {%>
+                <h1 class="display-1">لا توجد نتائج</h1>
+                <%}%>
+            </div>
+            <div class="col-sm-3 mobile-hide">
+
+                <br>
+                <div class="list-group Categories">
+                    <div class="list-group-item list-group-item-warning">
+                        <h4>التصنيفات</h4>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+     <a class="btn btn-primary pagination__next" href="/search?page=<%= (Count/10)+1%>&res=<%=query%>" hidden>Next</a>
+                <hr>
+            </div>
+        </div>

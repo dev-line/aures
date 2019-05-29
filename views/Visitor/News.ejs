@@ -1,0 +1,144 @@
+<style>
+    .fixed-top.scrolled {
+        background-color: rgba(36, 36, 36, 0.904) !important;
+        transition: background-color 200ms linear;
+        color: #ffffff !important;
+    }
+
+    .fixed-top.scrolled a {
+        color: #ffffff !important;
+    }
+</style>
+
+<% layout ('index') %>
+
+<title>الأخبار</title>
+
+
+<div id="News">
+    <h1 class="display-4 text-center text-white">أحدث الأخبار</h1>
+</div>
+<div class="container-fluid">
+    <div class="Last-News">
+        <!-- Slider -->
+        <div class="bd-example">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <% Posts.forEach((Post, i)=>{%>
+                    <% if(i==0){%>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="<%=i%> active"></li>
+                    <%} else if(i<=10){%>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="<%=i%>"></li>
+                    <%}%>
+                <%})%>
+                </ol>
+                <div class="carousel-inner text-right">
+                    <% Posts.forEach((Post, i)=>{%>
+                    <% if(i==0){%>
+                    <div class="carousel-item active">
+                        <a href="/news/<%=Post._id%>">
+                            <div class="card mb-3">
+                                <img src="<%= Post.Thumbnail %>" class="card-img-top" alt="Logo">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%=Post.Title%></h5>
+                                    <div class="card-text Content"><%- Post.Content.substring(0, 50) %></div>
+                                    <p class="card-text"><small
+                                            class="text-muted"><%= Post.Date.toLocaleString() %></small></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <%} else if(i<=5){%>
+                    <div class="carousel-item">
+                        <a href="/news/<%=Post._id%>">
+                            <div class="card mb-3">
+                                <img src="<%= Post.Thumbnail %>" class="card-img-top" alt="Logo">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%=Post.Title%></h5>
+                                    <div class="card-text Content"><%- Post.Content.substring(0, 50) %></div>
+                                    <p class="card-text"><small
+                                            class="text-muted"><%= Post.Date.toLocaleString() %></small></p>
+                                </div>
+                        </a>
+                    </div>
+                </div>
+                <%}%>
+                <%})%>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">next</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="News">
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <div class="row Posts">
+                    <% Posts.forEach((Post, i)=>{%>
+                    <% if(i>= Count-10 && i<Count){%>
+                    <div class="col-sm-6 Post">
+                        <div class="card card-small card-post card-post--1 text-right" style="margin: 10px;">
+                            <div class=" card-post__image" style="background-image: url('<%= Post.Thumbnail %>');">
+                                <p class="card-post__category badge badge-pill badge-info"><%= Post.Categ %></p>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a class="text-fiord-blue" href="/news/<%=Post._id%>"><%= Post.Title %></a>
+                                </h5>
+                                <div class="card-text d-inline-block mb-3 Content"><%- Post.Content.substring(0, 50) %>
+                                </div>
+                                <br>
+                                <span class="text-muted" style="direction: ltr"><%= Post.Date.toLocaleString() %></span>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+                    <%})%>
+                </div>
+            </div>
+            <div class="col-sm-3 mobile-hide">
+                <%if(LastPost.length > 0){%>
+                <div class="list-group Last-Views">
+                    <div class="list-group-item list-group-item-primary">
+                        <h4>إقرأ أيضا</h4>
+                    </div>
+                    <% LastPost.forEach((Post, i)=>{%>
+                    <% if(i<5){%>
+                    <a href="/news/<%=Post._id%>" class="list-group-item list-group-item-action">
+                        <%= Post.Title %>
+                    </a>
+                    <%}%>
+                <%})%>
+                </div>
+                <%}%>
+                <br>
+                <div class="list-group Categories">
+                    <div class="list-group-item list-group-item-warning">
+                        <h4>التصنيفات</h4>
+                    </div>
+                    <% if(Categ.length > 0){%>
+                <% Categ.forEach((Category)=>{%>
+                <button type="button" class="list-group-item list-group-item-action">
+                    <%= Category.Name %>
+                </button>
+                <%})%>
+                <%} else{%>
+                <button type="button" class="list-group-item list-group-item-action">
+                    لا توجد تصنيفات حاليا
+                </button>
+                <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-primary pagination__next" href="/news?page=<%= (Count/10)+1%>" hidden>Next</a>
+                <hr>
+            </div>
+        </div>

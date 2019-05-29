@@ -1,0 +1,78 @@
+<% layout ("Config") %>
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Welcome</h3>
+            <p>A simple way to control your own website</p>
+        </div>
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Create Admin account</h3>
+                    <form class="row register-form" action="/signup" method="POST">
+                        <% if (hasError) {%>
+                        <div class="error center">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    <span class="sr-only">Close</span>
+                                </button>
+                                <% messages.forEach((msg)=>{%>
+                                <%= msg %> <br>
+                                <%})%>
+                            </div>
+                        </div>
+                        <% } %>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="fname" placeholder="First Name *"
+                                    value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="lname" placeholder="Last Name *"
+                                    value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="Password *"
+                                    value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="cpassword"
+                                    placeholder="Confirm Password *" value="" />
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username" placeholder="username *"
+                                    value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" placeholder="Your Email *"
+                                    value="" />
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="question">
+                                    <option class="hidden" selected disabled>
+                                        Please select your Sequrity Question
+                                    </option>
+                                    <option name="question">What is your Birthdate?</option>
+                                    <option name="question">What is Your old Phone Number
+                                    </option>
+                                    <option name="question">What is your Pet Name?</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="answer" placeholder="`Answer *"
+                                    value="" />
+                            </div>
+                        </div>
+                        <button type="submit" class="btnRegister center" style="width: 80%;">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

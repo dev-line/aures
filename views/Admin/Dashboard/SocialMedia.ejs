@@ -1,0 +1,69 @@
+<style>
+    .Dash-Media {
+        box-shadow: inset .1875rem 0 0 #007bff;
+        background-color: #fbfbfb;
+        color: #007bff;
+    }
+
+    .Dash-Media span,
+    .Dash-Media i {
+        color: #007bff !important;
+    }
+</style>
+<Title>Social Media</Title>
+<% layout ('Dash') %>
+
+<div class="main-content-container container-fluid px-4">
+    <!-- Page Header -->
+    <div class="page-header row no-gutters py-4">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+            <span class="text-uppercase page-subtitle">Components</span>
+            <h3 class="page-title">Social Media</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9 col-md-12">
+            <form action="/admin/dashboard/socialmedia" method="post">
+                <div>
+                    <i class="fab fa-facebook    "></i>
+                    <label> Facebook URL</label>
+                    <input class="form-control form-control-lg mb-3" name='fb' type="text" name="Facebook"
+                        value="<%=Media[0].fb%>" placeholder="Facebook">
+                </div>
+                <div>
+                    <i class="fab fa-instagram"></i>
+                    <label> Instagram URL</label>
+                    <input class="form-control form-control-lg mb-3" name='Insta' type="text" name="Instagram"
+                        value="<%=Media[0].Insta%>" placeholder="Instagram">
+                </div>
+                <div>
+                    <i class="fab fa-youtube"></i>
+                    <label> YouTube URL</label>
+                    <input class="form-control form-control-lg mb-3" name='Youtube' type="text" name="YouTube"
+                        value="<%=Media[0].YouTube%>" placeholder="YouTube">
+                </div>
+                <div>
+                    <i class="fas fa-broadcast-tower"></i>
+                    <label> Live URL</label>
+                    <input class="form-control form-control-lg mb-3" name='Live' type="text" name="Live"
+                        value="<%=Media[0].Live%>" placeholder="Live">
+                </div>
+                <div>
+                    <i class="fab fa-twitter"></i>
+                    <label> Twitter URL</label>
+                    <input class="form-control form-control-lg mb-3" name='Twitter' type="text" name="Twitter"
+                        value="<%=Media[0].Twitter%>" placeholder="Twitter">
+                </div>
+                <div>
+                    <i class="fas fa-rss    "></i>
+                    <label> RSS URL</label>
+                    <input class="form-control form-control-lg mb-3" name='rss' type="text" name="RSS"
+                        value="<%=Media[0].rss%>" placeholder="RSS">
+                </div>
+                <div class="text-right">
+                    <button type="submit" name="accent" id="accent" class="btn btn-accent">Save</button>
+                </div>
+        </div>
+    </div>
+</div>
+</form>

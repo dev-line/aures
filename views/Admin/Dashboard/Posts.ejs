@@ -1,0 +1,52 @@
+<style>
+    .Blog-Post {
+        box-shadow: inset .1875rem 0 0 #007bff;
+        background-color: #fbfbfb;
+        color: #007bff;
+    }
+
+    .Blog-Post span,
+    .Blog-Post i {
+        color: #007bff !important;
+    }
+</style>
+<% layout ('Dash') %>
+<title>Blog Posts</title>
+<div class="main-content-container container-fluid px-4">
+    <!-- Page Header -->
+    <div class="page-header row no-gutters py-4">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+            <span class="text-uppercase page-subtitle">Components</span>
+            <h3 class="page-title">Blog Posts</h3>
+        </div>
+    </div>
+    <!-- End Page Header -->
+    <div class="row">
+        <% Posts.forEach(Post=>{%>
+        <div class="col-lg-6 col-sm-12 mb-4" style="direction: rtl">
+            <div class="card card-small card-post card-post--aside card-post--1">
+                <div class="card-post__image" style="background-image: url('<%= Post.Thumbnail %>');">
+                    <span class="card-post__category badge badge-pill badge-dark"><%=Post.Categ %></s>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-fiord-blue text-right" href="/news/<%= Post._id %>"
+                            target="_blank"><%= Post.Title %></a>
+                    </h5>
+                    <div class="card-text d-inline-block mb-3 text-right Content"><%- Post.Content %> </div>
+                    <span class="text-muted"><%=Post.Date.toLocaleString() %></span>
+
+                    <div class='Post-Action'>
+                        <a href="/admin/dashboard/edit-post/<%= Post._id %>"
+                            class="btn btn-xs btn-outline-accent Editing">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <button class="btn btn-xs btn-outline-danger Deleting" value="<%= Post._id%>"><i
+                                class="fa fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%})%>
+    </div>
+</div>

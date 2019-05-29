@@ -1,0 +1,44 @@
+<style>
+    .fixed-top.scrolled {
+        background-color: rgba(36, 36, 36, 0.904) !important;
+        transition: background-color 200ms linear;
+        color: #ffffff !important;
+    }
+
+    .fixed-top.scrolled a {
+        color: #ffffff !important;
+    }
+</style>
+
+<% layout ('index') %>
+
+
+<title><%= Post.Title %></title>
+
+<div class="Single_Post" style="background-image: url('<%= Post.Thumbnail %>')">
+</div>
+<div class="container text-right">
+    <div style="padding: 20px;">
+        <div>
+            <a href="#"><%= Post.Categ %></a>
+            /
+            <span><%= Post.Date.toLocaleString() %></span>
+            <a href="" target="_blank" id="Share-fb" class="btn-sm btn-accent">
+                <i class="fab fa-facebook"></i>
+                مشاركة
+            </a>
+            <a href="" target="_blank" id="Share-tw" class="btn-sm btn-info">
+                <i class="fab fa-twitter"></i>
+                مشاركة
+            </a>
+        </div>
+        <h1 class="display-4"><%= Post.Title %></h1>
+    </div>
+
+    <div class="container">
+        <div style="padding: 20px;">
+            <%- Post.Content %>
+        </div>
+    </div>
+    <hr>
+</div>

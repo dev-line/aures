@@ -1,0 +1,48 @@
+<% layout ("Config") %>
+<div class="container-fluid login-content">
+    <div class="login center">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" action="/login" method="POST">
+                <% if (hasError) {%>
+                <div class="error center">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <% messages.forEach((msg)=>{%>
+                        <%= msg %> <br>
+                        <%})%>
+                    </div>
+
+                </div>
+                <% } %>
+                <div class='logo center'>
+                    <img src="/public/img/icons/logo.png" alt="">
+                </div>
+                <h1>Login</h1>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="email" placeholder="Your Email *" value="" />
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="Your Password *"
+                        value="" />
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="btnRegister" type="submit">
+                            Login
+                        </button>
+                    </div>
+                </div>
+                <div class="forget">
+                    <a href="#">forget password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ar">
+<% include Landing/Header %>
+
+<body class="h-100">
+    <% include Landing/Sidebar %>
+    <% include Landing/Error %>
+    <% include Landing/Confirm %>
+    <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+        <% include Landing/MainBar %>
+        <%- body -%>
+        <footer class="small text-center">
+            <div class="container">
+                Copyright &copy; <a href="https://www.facebook.com/zinou4king" target="_blank">ZinouJs</a> 2019
+            </div>
+        </footer>
+    </main>
+</body>
+<% include Landing/Script %>
+
+</html>

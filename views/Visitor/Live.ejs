@@ -1,0 +1,85 @@
+<style>
+    .fixed-top.scrolled {
+        background-color: rgba(36, 36, 36, 0.904) !important;
+        transition: background-color 200ms linear;
+        color: #ffffff !important;
+    }
+
+    .fixed-top.scrolled a {
+        color: #ffffff !important;
+    }
+</style>
+
+<% layout ('index') %>
+
+<title>البث المباشر</title>
+
+<div id="Live">
+    <h1 class="display-4 text-center text-white">البث المباشر</h1>
+</div>
+
+<div class="container-fluid" style="padding-top: 20px;">
+    <div class="row">
+        <div class="col-9">
+            <div class="text-center">
+                <% if (Live){%>
+                <iframe width="100%" height="500rem" src="<%=Live.Live%>">
+                </iframe>
+                <%} else{%>
+                <div class="jumbotron">
+                    <h1 class="display-1">البث المباشر غير متوفر حاليا</h1>
+                </div>
+                <%}%>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                <% Posts.forEach((Post, i)=>{%>
+                <% if(i<5){%>
+                <div class="col-6">
+                    <div class="card" style="margin: 5px; direction: ltr">
+                        <div class="card card-small card-post card-post--aside card-post--1">
+                            <div class="card-post__image" style="background-image: url('<%= Post.Thumbnail %>');">
+                                <div href="#" class="card-post__category badge badge-pill badge-dark"><%= Post.Categ %>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a class="text-fiord-blue" href="<%=Post._id %>"><%= Post.Title %></a>
+                                </h5>
+                                <div class="card-text d-inline-block mb-3 Content"><%- Post.Content.substring(0, 50) %>
+                                </div>
+                                <span class="text-muted"><%= Post.Date.toLocaleString() %></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <%}%>
+                <%})%>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 mobile-hide">
+        <div class="container-fluid">
+            <% LastPost.forEach((Post, i)=>{%>
+            <% if(i<5){%>
+            <div class="card card-small card-post card-post--1 text-right" style="width: 18rem; margin-bottom: 10px;">
+                <div class=" card-post__image" style="background-image: url('<%= Post.Thumbnail %>');">
+                    <p class="card-post__category badge badge-pill badge-info"><%= Post.Categ %></p>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-fiord-blue" href="/news/<%=Post._id%>"><%= Post.Title %></a>
+                    </h5>
+                    <div class="card-text d-inline-block mb-3 Content"><%- Post.Content.substring(0, 50) %></div>
+                    <br>
+                    <span class="text-muted" style="direction: ltr"><%= Post.Date.toLocaleString() %></span>
+                </div>
+            </div>
+            <%}%>
+            <%})%>
+        </div>
+    </div>
+</div>
+</div>
+</div>

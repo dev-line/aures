@@ -1,0 +1,128 @@
+<% layout ('index') %>
+
+<title>تواصل معنا</title>
+
+<style type="text/css">
+    .section {
+        padding-top: 200px !important;
+    }
+
+
+    .form-control {
+        border: 1px solid #ced4da !important;
+        border-radius: 8px !important;
+
+    }
+
+
+    .contact_thumb {
+        padding: .25rem;
+        background-color: #fff;
+        border: none !important;
+        border-radius: .25rem;
+        max-width: 20%;
+        height: auto;
+    }
+
+
+    .btn-pill {
+        padding: 0.2175rem 0.9375rem !important;
+        background: rgb(229, 250, 246);
+        color: #3fdbb1 !important;
+        border-radius: 6.1875rem;
+        font-size: 14px;
+        cursor: default !important;
+    }
+
+
+    .grid-divider {
+        border-left: 1px solid #e7eaf3;
+    }
+
+    .section {
+        background: url('/public/img/bg/login-bg.png')
+    }
+
+    label {
+        color: azure;
+    }
+</style>
+
+
+<div class="section">
+    <section class="mb-5">
+
+        <div class="text-center mx-md-auto mb-5">
+            <h2 class="display-4 text-warning">راسلنا الأن</h2>
+        </div>
+
+        <div class="container">
+
+            <form class="needs-validation text-right" novalidate>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationCustom01">الاسم<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="validationCustom01" placeholder="محمد" value=""
+                            required>
+                        <div class="valid-feedback">
+                            جيد
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationCustom02">اللقب<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="validationCustom02" placeholder="بن فلان" value=""
+                            required>
+                        <div class="valid-feedback">
+                            جيد
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md mb-5">
+                        <label for="validationCustom03">البريد الالكتروني <span class="text-danger">*</span></label>
+                        <input type="Email" class="form-control" id="validationCustom03"
+                            placeholder="contact@newport.com" required>
+                        <div class="invalid-feedback">
+                            الرجاء ادخال بريد الكتروني صحيح
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md mb-3">
+                        <label for="validationCustom03">المحتوى<span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" required=""></textarea>
+                        <div class="invalid-feedback">
+                            الرجاء التأكد من صحة المعلومات
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button class="btn btn-primary" type="submit">إرسال</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+    <script type="text/javascript">
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>

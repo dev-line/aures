@@ -1,0 +1,99 @@
+<style>
+    .Dash-Profile {
+        box-shadow: inset .1875rem 0 0 #007bff;
+        background-color: #fbfbfb;
+        color: #007bff;
+    }
+
+    .Dash-Profile span,
+    .Dash-Profile i {
+        color: #007bff !important;
+    }
+</style>
+<% layout ('Dash') %>
+<title>Profile</title>
+
+<div class="main-content-container container-fluid px-4">
+    <!-- Page Header -->
+    <div class="page-header row no-gutters py-4">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+            <span class="text-uppercase page-subtitle">Overview</span>
+            <h3 class="page-title">User Profile</h3>
+        </div>
+    </div>
+    <!-- End Page Header -->
+    <!-- Default Light Table -->
+    <div class="card card-small mb-4 pt-3">
+        <div class="card-header border-bottom text-center">
+            <div class="mb-3 mx-auto">
+                <img class="rounded-circle" src="<%= user.Avatar %>" alt="User Avatar" width="110">
+            </div>
+            <h4 class="mb-0"><%= user.FirstName%> <%= user.LastName%></h4>
+            <span class="text-muted d-block mb-2"><%= user.Role %></span>
+        </div>
+
+    </div>
+    <div class="card card-small pt-3">
+        <div class="card-header border-bottom">
+            <h6 class="m-0">Account Details</h6>
+        </div>
+        <% if (hasError) {%>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <% messages.forEach((msg)=>{%>
+            <%= msg %> <br>
+            <%})%>
+        </div>
+        <% } %>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item p-3">
+                <div class="row">
+                    <div class="col">
+                        <form action="/admin/user/<%=user._id%>" method="post">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="feFirstName">First Name</label>
+                                    <input type="text" class="form-control" name="fname" id="feFirstName" required
+                                        placeholder="First Name" value="<%=user.FirstName%>"> </div>
+                                <div class="form-group col-md-6">
+                                    <label for="feLastName">Last Name</label>
+                                    <input type="text" class="form-control" name="lname" id="feLastName" required
+                                        placeholder="Last Name" value="<%=user.LastName%>"> </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="feEmailAddress">User Name</label>
+                                    <input type="text" class="form-control" name="username" id="feEmailAddress" required
+                                        placeholder="User Name" value="<%=user.UserName%>">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="feInputAddress">Email</label>
+                                    <input type="email" class="form-control" name="email" id="feInputAddress" required
+                                        placeholder="Email" value="<%=user.Email%>">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="fePassword">Old Password</label>
+                                    <input type="password" class="form-control" name="oldpass" id="fePassword" required
+                                        placeholder="Password">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="fePassword">New Password</label>
+                                    <input type="password" class="form-control" name="newpass" id="fePassword"
+                                        placeholder="Password">
+                                </div>
+                            </div>
+                            <input class="btn btn-accent" type="submit" value="Update Account">
+                        </form>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- End Default Light Table -->
+</div>
