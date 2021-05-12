@@ -29,7 +29,7 @@
     "gm": "^1.23.1",
     "json-parser": "^1.1.5",
     "lodash": "^4.17.11",
-    "merge": "^1.2.1",
+    "merge": "^2.1.1",
     "method": "^2.0.0",
     "method-override": "^3.0.0",
     "methods": "^1.1.2",
